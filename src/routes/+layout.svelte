@@ -168,7 +168,7 @@
       </div>
     </header>
 
-    <div class="flex-1">
+    <div class="flex flex-col flex-1">
       <!-- Page content -->
       {@render children?.()}
     </div>
