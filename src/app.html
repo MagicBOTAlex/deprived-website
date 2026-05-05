@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="Deprived" style="overflow-x: hidden">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="
+		We are the deprived devs, and we are a team of developers specializing in indie game development, full-stack development, and anything tech-related!"
+    />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Change theme for site here -->
+    <link rel="stylesheet" href="/stylesheets/global.css" />
+    %sveltekit.head%
+
+    <script>
+      let theme = null;
+
+      if (typeof localStorage !== "undefined") {
+        theme = localStorage.getItem("theme");
+      }
+
+      window.AvailableThemes = ["green", "netherrack", "dark", "pink"];
+
+      if (!theme) {
+        // const randomNumber = Math.floor(Math.random() * 4);
+        // console.log("Slecting: " + AvailableThemes[randomNumber]);
+        // document.documentElement.setAttribute('data-theme', AvailableThemes[randomNumber]);
+        localStorage.setItem("theme", AvailableThemes[0]);
+      }
+      //else {
+      //	console.log("Slecting: " + theme);
+      //	document.documentElement.setAttribute('data-theme', theme);
+      //}
+    </script>
+  </head>
+
+  <body style="display: contents">
+    %sveltekit.body%
+  </body>
+</html>

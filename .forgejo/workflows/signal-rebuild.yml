@@ -1,0 +1,27 @@
+name: Rebuild signaller for deprived.dev to rebuild site
+
+on: [push]
+
+jobs:
+    buildsignaller:
+        name: Rebuild Signaller
+        runs-on: native
+        steps:
+            - name: Get branch
+              run: echo "BRANCH=$(echo "${{ github.ref }}" | cut -d'/' -f3)" >> $GITHUB_ENV
+            - name: Signal deprived.dev for rebuild
+              run: |
+                sshkey=$(mktemp)
+                trap "rm -rf $sshkey" exit
+                # Added quotes to preserve newlines in the private key
+                echo "$SSH_PRIVATE_KEY" > $sshkey
+                service="build-deprived-website-$BRANCH"
+                sshargs="-o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+                echo "Starting systemd oneshot service: $service"
+                ssh -i $sshkey -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no deprivedbuilder@deprived.dev -t "sudo /run/current-system/sw/bin/systemctl start $service"
+                echo "Build Log: $(ssh -i $sshkey $sshargs deprivedbuilder@deprived.dev "cat ~/latest_build.log")"
+              env:
+                SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+                GITKEY: ${{ secrets.GITKEY }}
+                PUBLIC_URL_BASE: ${{ vars.PUBLIC_URL_BASE }}
+                PUBLIC_POCKET_URL: ${{ vars.PUBLIC_POCKET_URL }}

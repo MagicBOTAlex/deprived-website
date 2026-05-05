@@ -1,0 +1,18 @@
+<script>
+    export let Class = '';
+    export let Style = '';
+  </script>
+  
+<svg
+    class={Class}
+    style={Style}
+    height="20"
+    id="Layer_1"
+    version="1.1"
+    viewBox="0 0 28 20"
+    width="28"
+    xml:space="preserve"><defs
+        id="defs1" /><path
+        d="M 2,4 H 26 C 27.104,4 28,3.104 28,2 28,0.896 27.104,0 26,0 H 2 C 0.896,0 0,0.896 0,2 0,3.104 0.896,4 2,4 Z M 26,8 H 2 c -1.104,0 -2,0.896 -2,2 0,1.104 0.896,2 2,2 h 24 c 1.104,0 2,-0.896 2,-2 0,-1.104 -0.896,-2 -2,-2 z m 0,8 H 2 c -1.104,0 -2,0.896 -2,2 0,1.104 0.896,2 2,2 h 24 c 1.104,0 2,-0.896 2,-2 0,-1.104 -0.896,-2 -2,-2 z"
+        id="path1"
+        style="fill-opacity:1" /></svg>
