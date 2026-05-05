@@ -38,12 +38,21 @@
       />
     </div>
     <div class="flex w-full justify-around">
-      <div>{round(leftRange.start)} - {round(leftRange.end)}</div>
-      <div>{round(rightRange.start)} - {round(rightRange.end)}</div>
+      <div>
+        -{round(1 - leftRange.start).toFixed(1)} --- -{round(
+          1 - leftRange.end,
+        ).toFixed(1)}
+      </div>
+      <div>
+        {round(rightRange.start).toFixed(1)} --- {round(rightRange.end).toFixed(
+          1,
+        )}
+      </div>
     </div>
   </div>
-  <div class="w-full">
+  <div class="w-full flex justify-center max-h-screen">
     <img
+      class="max-h-[80vh] object-contain"
       src={"https://deprived.dev/assets/school/social-science/data/plots/sentiment_graph_-" +
         round(1 - leftRange.end).toFixed(1) +
         "_-" +
