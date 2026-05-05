@@ -7,6 +7,8 @@
   import re from "@ts/Redaction/Redactor";
   const buildTime = __BUILD_TIME__;
 
+  import { page } from "$app/stores";
+
   let scrollY = 0;
   const unscrollSpeed = 100;
   let unscrollScrollDiv: HTMLDivElement;
@@ -64,6 +66,17 @@
 
   function onResize() {
     totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+  }
+
+  function getGitURL() {
+    if ($page.url.pathname !== "/") {
+      return (
+        "https://git.deprived.dev/DeprivedDevs/deprived-main-website/src/branch/main/src/routes" +
+        $page.url.pathname
+      );
+    } else {
+      return "https://git.deprived.dev/DeprivedDevs/deprived-main-website/";
+    }
   }
 
   onDestroy(() => {
@@ -129,12 +142,9 @@
               /></a
             >
           </div>
-          <!-- <span -->
-          <!--   >Website <a -->
-          <!--     href="https://git.deprived.dev/DeprivedDevs/deprived-main-website" -->
-          <!--     target="_blank">source code</a -->
-          <!--   ></span -->
-          <!-- > -->
+          <span class="text-blue-400 underline">
+            <a href={getGitURL()} target="_blank">Website source code</a>
+          </span>
         </div>
         <div class="flex flex-col items-center">
           <h3><b>Contact</b></h3>

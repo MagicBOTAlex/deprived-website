@@ -40,6 +40,7 @@
   import onMount from "@e/onMount";
   import Zooter from "./comps/Zooter.svelte";
   import CustomScrollBar from "./comps/CustomScrollBar.svelte";
+  import NavbarItems from "./NavbarItems.svelte";
 
   onMount(async () => {
     handleUrlParams();
@@ -119,15 +120,9 @@
             </a>
             <div class="nav-spacer" />
 
+            <NavbarItems />
             {@render SwitchThemeButton()}
 
-            <a
-              href="/cv?hideOnPrint=1"
-              target="_blank"
-              style="width: 7.5rem;"
-              class="text-center justify-center text-md"
-              >{$re?.nick ?? "Alex"}'s CV</a
-            >
             <!-- <a href="/tools" style="width: 7.5rem;" class="text-center">Tools</a> -->
             <!-- <a href="https://botalex.itch.io/" target="_blank">Games</a> -->
             <!-- <a href="/posts">Blog</a>
@@ -157,15 +152,14 @@
           </div>
           {#if !navbarHidden}
             <div class="nav-list" transition:fly={{ y: -25, duration: 350 }}>
+              <NavbarItems />
+
               <!-- <a onclick={resetNavBar} href="/">Home</a> -->
               <!-- <a -->
               <!--   onclick={resetNavBar} -->
               <!--   href="https://botalex.itch.io/" -->
               <!--   target="_blank">Games</a -->
               <!-- > -->
-              <a href="/cv?hideOnPrint=1" target="_blank" class="justify-center"
-                >{$re?.nick ?? "Alex"}'s CV</a
-              >
               <!-- <a onclick={resetNavBar} href="/posts">Blog</a>
                         <a onclick={resetNavBar} href="/about">About</a> -->
             </div>
