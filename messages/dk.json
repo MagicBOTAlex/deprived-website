@@ -5,7 +5,7 @@
     "cv": {
       "profile": {
         "title": "Om mig",
-        "tooltip": "Jeg kender de sprog I baggrunden!",
+        "tooltip": "Jeg kender de sprog i baggrunden!",
         "long": "Jeg elsker at lære på egen hånd og jeg prøver altid at være ærlig. Jeg er meget selvmotiveret og fuldfører som regel de opgaver, jeg sætter mig for. Det giver mig overskud til utallige hobbyer såsom 3D-print, lodning, programmering og VR.\n\nUdover min GitHub har jeg fremhævet nogle projekter nedenfor. :)"
       },
       "flex": {
@@ -16,7 +16,7 @@
       "projects": {
         "title": "Fremhævet projekter",
         "tooltip": "Jeg arbejder sikkert på noget nyt. Du er altid velkommen til at spørge!",
-        "cv": "Denne CV er lavet fuldstændig I HTML, CSS og Svelte",
+        "cv": "Denne CV er lavet fuldstændig i HTML, CSS og Svelte",
         "CV": "Implementeret YoloV1 (Objekt genkendelse)",
         "embedded": "Designet og bygget en CN Maskine",
         "open": "Bidrager ofte til open-source",
