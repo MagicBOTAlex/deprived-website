@@ -6,17 +6,17 @@
       "profile": {
         "title": "About me",
         "tooltip": "I know the languages in the decor!",
-        "long": "I love learning on my own, and I try to be honest. I am highly self-motivated and I usually archive any task I put my mind to. This enables me to have countless hobbies, such as 3D printing, soldering, programming, and VR.\n\nOther than my github, I've listed some projects highlighted below. :)"
+        "long": "I love learning on my own, and I try to be honest. I am highly self-motivated and I usually achieve any task I put my mind to. This enables me to have countless hobbies, such as 3D printing, soldering, programming, and VR.\n\nOther than my github, I've listed some projects highlighted below. :)"
       },
       "flex": {
         "title": "Key Achievement",
-        "body": "<a href='https://deprived.dev'>The <span class='text-blue-500 underline'>deprived devs</span></a> has won every gamejam we've participated in!"
+        "body": "<a href='https://deprived.dev'>The <span class='text-blue-500 underline'>deprived devs</span></a> had won every gamejam we've participated in!"
       },
       "projects": {
         "title": "Big projects",
         "tooltip": "Contact me if you're curious! :D",
         "cv": "This CV is made with HTML, CSS, and Svelte",
-        "CV": "Implimented YoloV1 from scratch. (object detection)",
+        "CV": "Implemented YoloV1 from scratch. (object detection)",
         "embedded": "Built custom CNC machine",
         "open": "Often contribute to Open-source",
         "pcb": "I have designed multiple Printed Circuit Boards (PCBs)",
