@@ -9,15 +9,15 @@
         "long": "Jeg elsker at lære på egen hånd og jeg prøver altid at være ærlig. Jeg er meget selvmotiveret og fuldfører som regel de opgaver, jeg sætter mig for. Det giver mig overskud til utallige hobbyer såsom 3D-print, lodning, programmering og VR.\n\nUdover min GitHub har jeg fremhævet nogle projekter nedenfor. :)"
       },
       "flex": {
-        "title": "Størreste bedrift",
+        "title": "Støreste bedrift",
         "tooltip": "*Gamejams der havde konkurancer",
         "body": "Mit hold <a href='https://deprived.dev'>The <span class='text-blue-500 underline'>deprived devs</span></a> har vundet alle Game Jams, som vi har deltaget!"
       },
       "projects": {
         "title": "Fremhævet projekter",
         "tooltip": "Jeg arbejder sikkert på noget nyt. Du er altid velkommen til at spørge!",
-        "cv": "Denne CV er lavet fuldstændig I HTML, CSS, og Svelte",
-        "CV": "Implimenteret YoloV1 fra bunden (Objekt genkendelse)",
+        "cv": "Denne CV er lavet fuldstændig I HTML, CSS og Svelte",
+        "CV": "Implementeret YoloV1 fra bunden (Objekt genkendelse)",
         "embedded": "Designet og bygget en CN Maskine",
         "open": "Bidrager ofte til open-source",
         "pcb": "Har designet flere printed circuit boards (PCB'er)",
