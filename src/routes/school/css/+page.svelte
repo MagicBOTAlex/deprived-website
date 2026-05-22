@@ -189,7 +189,7 @@
     <input type="checkbox" checked={true} />
 
     <!-- Accordion Header Title -->
-    <div class="collapse-title text-6xl font-medium">Full Network Overview</div>
+    <div class="collapse-title text-4xl font-medium">Full Network Overview</div>
 
     <!-- Accordion Body Content -->
     <div class="collapse-content">
@@ -270,7 +270,7 @@
     <input type="checkbox" checked={true} />
 
     <!-- Accordion Header Title -->
-    <div class="collapse-title text-6xl font-medium">
+    <div class="collapse-title text-4xl font-medium">
       Explore Country Level Relationships
     </div>
 
@@ -422,7 +422,7 @@
     <input type="checkbox" checked={true} />
 
     <!-- Accordion Header Title -->
-    <div class="collapse-title text-6xl font-medium">Main findings</div>
+    <div class="collapse-title text-4xl font-medium">Main findings</div>
 
     <!-- Accordion Body Content -->
     <div class="collapse-content">
@@ -484,6 +484,11 @@
         <div class="lg:w-1/3 flex flex-col gap-4 max-h-screen min-h-0">
           <div class="font-semibold text-2xl shrink-0">
             Example of China’s outgoing vs incoming diplomatic attention
+          </div>
+          <div
+            class="badge bagde-xl badge-primary font-semibold text-primary-content"
+          >
+            Interactive
           </div>
 
           <div
