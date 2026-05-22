@@ -92,6 +92,70 @@
     <h1 class="text-4xl">Country Mention Networks in UN Speeches</h1>
     <div>Computational Social Science 02467 - Group 10</div>
   </div>
+
+  <div class="max-w-6xl mx-auto p-6 text-base-content font-sans">
+    <!-- Section 1: Overview -->
+    <section class="mb-8">
+      <p class="text-base leading-relaxed mb-4">
+        The analysis is based on the United Nations General Debate Corpus
+        (UNGDC), which contains speeches delivered by countries at the United
+        Nations over multiple decades. Each observation consists of a speech, a
+        country, and a year, making it possible to connect political language
+        with both countries and time.
+      </p>
+      <p
+        class="text-sm font-semibold tracking-wide text-base-content/70 mb-2 uppercase"
+      >
+        This makes the dataset especially useful for studying:
+      </p>
+      <ul class="list-disc pl-6 space-y-1 text-base text-base-content/80">
+        <li>international attention patterns</li>
+        <li>political communication</li>
+        <li>diplomatic relationships</li>
+        <li>sentiment in international discourse</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: How the Network Works -->
+    <section class="mb-8">
+      <h2
+        class="text-2xl font-bold border-b border-base-200 pb-2 mb-4 text-base-content"
+      >
+        How the Network Works
+      </h2>
+      <p class="text-base leading-relaxed mb-4">
+        In this project, countries are treated as nodes, while mentions from one
+        country to another form directed edges. A directed edge means that one
+        country refers to another in a speech. The direction matters, because
+        diplomatic attention is not necessarily symmetric: a country may talk
+        about another country much more than it is talked about in return.
+      </p>
+      <p class="text-base leading-relaxed mb-4">
+        Edge color reflects whether the mention is framed in a more positive or
+        negative way. This allows the network to capture both the volume and the
+        tone of diplomatic attention.
+      </p>
+
+      <div
+        class="mockup-code bg-base-200 text-base-content pre-wrap rounded-xl px-4 py-4 before:content-none"
+      >
+        <ul class="space-y-2 text-base">
+          <li><span class=" font-bold">Node:</span> a country</li>
+          <li>
+            <span class=" font-bold">Directed edge:</span> one country mentions another
+          </li>
+          <li>
+            <span class=" font-bold">Edge weight:</span> how often the mention occurs
+          </li>
+          <li>
+            <span class="font-bold">Edge color:</span> whether the mention is more
+            positive or more negative
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
   <div
     class="collapse collapse-arrow bg-base-200 border border-base-300 rounded-box w-full"
   >
@@ -105,6 +169,28 @@
 
     <!-- Accordion Body Content -->
     <div class="collapse-content">
+      <div class="w-full flex justify-center">
+        <!-- Section 3: Full Network Overview -->
+        <section class="max-w-6xl">
+          <h2
+            class="text-2xl font-bold border-b border-base-200 pb-2 mb-4 text-base-content"
+          >
+            Full Network Overview
+          </h2>
+          <p class="text-base leading-relaxed">
+            The graph below shows the full diplomatic mention network built from
+            the UN speeches. Each node represents a country, and each directed
+            edge represents one country mentioning another. Edge color reflects
+            whether the mention is framed in a more positive or more negative
+            way. Users can adjust the positive and negative sliders to filter
+            the graph by sentiment strength. Because the full graph contains a
+            very large number of connections, it provides a useful overview of
+            how dense and interconnected international political discourse is,
+            but it is too crowded for detailed country level interpretation.
+          </p>
+        </section>
+      </div>
+
       <div class="flex flex-col items-center justify-center w-full prose pt-4">
         <div class="flex gap-30 justify-between">
           <div>Negative range</div>
