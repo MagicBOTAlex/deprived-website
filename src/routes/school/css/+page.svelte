@@ -23,6 +23,7 @@
   }
 
   let currentCountry: string = "";
+  let currentCountrySelected: string = "";
   let interactiveEmbed: HTMLIFrameElement;
 
   function selectCountry(country: string, towards: boolean) {
@@ -33,10 +34,16 @@
       (towards ? "in" : "out") +
       ".html";
 
-    interactiveEmbed.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    currentCountrySelected = towards
+      ? "Others towards " + getCountryName(country)
+      : getCountryName(country) + "'s opinion of others";
+
+    setTimeout(() => {
+      interactiveEmbed.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }, 200);
   }
 
   function getCountryName(code) {
@@ -65,7 +72,7 @@
   });
 </script>
 
-<div class="flex flex-col w-full h-full pt-40 gap-16">
+<div class="flex flex-col w-full h-full pt-40 gap-16 NotoSans">
   <div class="flex justify-center w-full">
     <h1 class="text-4xl">Computational Social Science</h1>
   </div>
@@ -129,7 +136,11 @@
       </div>
     </div>
 
-    <div style="width: 80%; height: 800px;">
+    <div
+      class={currentCountry == "" ? "hidden" : ""}
+      style="width: 80%; height: 800px;"
+    >
+      <div>{currentCountrySelected}</div>
       <iframe
         src={currentCountry}
         width="100%"
@@ -144,10 +155,19 @@
     <div class="w-[40%]">
       <div class="text-2xl">List of interactive graphs</div>
       <table class="table">
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>ISO3</th>
+            <th>From buttons</th>
+            <th>Towards buttons</th>
+          </tr>
+        </thead>
         <tbody>
           {#each iso3 as country}
             <tr>
               <th>{getCountryName(country)}</th>
+              <th>{country}</th>
               <th
                 ><button
                   on:click={() => selectCountry(country, false)}
