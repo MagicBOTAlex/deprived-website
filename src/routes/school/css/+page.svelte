@@ -498,9 +498,7 @@
               Interactive
             </div>
 
-            <div
-              class="flex flex-1 flex-col lg:flex-row gap-4 min-h-0 overflow-hidden"
-            >
+            <div class="flex flex-1 flex-col gap-4 min-h-0 overflow-hidden">
               <iframe
                 src="https://deprived.dev/assets/school/social-science/data/interactive/CHN-in.html"
                 style="border: none; background: transparent;"
