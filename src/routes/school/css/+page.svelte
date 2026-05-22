@@ -95,26 +95,52 @@
 
   <div class="max-w-6xl mx-auto p-6 text-base-content font-sans">
     <!-- Section 1: Overview -->
-    <section class="mb-8">
-      <p class="text-base leading-relaxed mb-4">
-        The analysis is based on the United Nations General Debate Corpus
-        (UNGDC), which contains speeches delivered by countries at the United
-        Nations over multiple decades. Each observation consists of a speech, a
-        country, and a year, making it possible to connect political language
-        with both countries and time.
-      </p>
-      <p
-        class="text-sm font-semibold tracking-wide text-base-content/70 mb-2 uppercase"
-      >
-        This makes the dataset especially useful for studying:
-      </p>
-      <ul class="list-disc pl-6 space-y-1 text-base text-base-content/80">
-        <li>international attention patterns</li>
-        <li>political communication</li>
-        <li>diplomatic relationships</li>
-        <li>sentiment in international discourse</li>
-      </ul>
-    </section>
+    <div class="flex">
+      <section class="mb-8 flex-2/3">
+        <p class="text-base leading-relaxed mb-4">
+          The analysis is based on the United Nations General Debate Corpus
+          (UNGDC), which contains speeches delivered by countries at the United
+          Nations over multiple decades. Each observation consists of a speech,
+          a country, and a year, making it possible to connect political
+          language with both countries and time.
+        </p>
+        <p
+          class="text-sm font-semibold tracking-wide text-base-content/70 mb-2 uppercase"
+        >
+          This makes the dataset especially useful for studying:
+        </p>
+        <ul class="list-disc pl-6 space-y-1 text-base text-base-content/80">
+          <li>international attention patterns</li>
+          <li>political communication</li>
+          <li>diplomatic relationships</li>
+          <li>sentiment in international discourse</li>
+        </ul>
+      </section>
+      <div class="flex-1/3">
+        <div class="border-2 border-base-300 p-2 rounded-xl">
+          <p
+            class="card text-sm font-semibold tracking-wide text-base-content/70 mb-2 uppercase"
+          >
+            Dataset: UN General Debate Corpus (UNGDC)
+          </p>
+          <ul class="list-disc pl-6 space-y-1 text-base text-base-content/80">
+            <li><span class=" font-bold">Years covered:</span> 1970-2015</li>
+            <li>
+              <span class=" font-bold">Speeches:</span> 7507
+            </li>
+            <li>
+              <span class=" font-bold">Countries:</span> 199 unique countries
+            </li>
+            <li>
+              <span class="font-bold">Main variables:</span> <br />
+              <span class="badge">year</span>
+              <span class="badge">countries</span>
+              <span class="badge">speech text</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <!-- Section 2: How the Network Works -->
     <section class="mb-8">
