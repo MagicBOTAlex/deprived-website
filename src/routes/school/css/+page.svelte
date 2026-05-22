@@ -3,6 +3,7 @@
   import iso3 from "./iso3.json";
   import countryList from "country-list-js";
   import onMount from "@src/optimizers/onMount";
+  import Search from "lucide-svelte/icons/search";
 
   class Range {
     start: number = 0;
@@ -25,6 +26,17 @@
   let currentCountry: string = "";
   let currentCountrySelected: string = "";
   let interactiveEmbed: HTMLIFrameElement;
+  let searchFilter: string = "";
+
+  interface RegionFilter {
+    region: string;
+    selected: boolean;
+  }
+  const continents: string[] = countryList.continents();
+  const regionFilters: RegionFilter[] = continents.map((name) => ({
+    region: name,
+    selected: false,
+  }));
 
   function selectCountry(country: string, towards: boolean) {
     currentCountry =
@@ -152,8 +164,36 @@
       >
       </iframe>
     </div>
-    <div class="w-[40%]">
-      <div class="text-2xl">List of interactive graphs</div>
+    <div class="w-[60%]">
+      <div class="flex justify-between">
+        <div class="text-2xl">List of interactive graphs</div>
+        <div class="join">
+          <button
+            class="btn btn-outline btn-disabled btn-accent join-item grid items-center justify-center"
+          >
+            <Search />
+          </button>
+          <input
+            bind:value={searchFilter}
+            type="text"
+            class="input join-item"
+          />
+        </div>
+      </div>
+      <div class="py-4"></div>
+      <div class="flex flex-wrap gap-2">
+        <div class="">Filter by region:</div>
+        {#each regionFilters as filter}
+          <div class="join">
+            <input
+              type="checkbox"
+              bind:checked={filter.selected}
+              class="join-item checkbox"
+            />
+            <div class="input input-xs join-item">{filter.region}</div>
+          </div>
+        {/each}
+      </div>
       <table class="table">
         <thead>
           <tr>
@@ -165,23 +205,32 @@
         </thead>
         <tbody>
           {#each iso3 as country}
-            <tr>
-              <th>{getCountryName(country)}</th>
-              <th>{country}</th>
-              <th
-                ><button
-                  on:click={() => selectCountry(country, false)}
-                  class="btn btn-outline btn-primary">From {country}</button
-                ></th
-              >
-              <th
-                ><button
-                  on:click={() => selectCountry(country, true)}
-                  class="btn btn-outline btn-secondary"
-                  >Towards {country}</button
-                ></th
-              >
-            </tr>
+            {#if (getCountryName(country)
+              .toLowerCase()
+              .includes(searchFilter.toLowerCase()) || country
+                .toLowerCase()
+                .includes(searchFilter.toLowerCase())) && (!regionFilters.some((r) => r.selected) || regionFilters.find((r) => r.region === countryList.findByIso3(country)?.continent)?.selected)}
+              <tr>
+                <th>{getCountryName(country)}</th>
+                <th>{country}</th>
+                <th>
+                  <div class="w-full h-full grid items-center justify-center">
+                    <button
+                      on:click={() => selectCountry(country, false)}
+                      class="btn btn-outline btn-primary">From</button
+                    >
+                  </div>
+                </th>
+                <th>
+                  <div class="w-full h-full grid items-center justify-center">
+                    <button
+                      on:click={() => selectCountry(country, true)}
+                      class="btn btn-outline btn-secondary">Towards</button
+                    >
+                  </div>
+                </th>
+              </tr>
+            {/if}
           {/each}
         </tbody>
       </table>
