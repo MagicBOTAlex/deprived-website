@@ -4,6 +4,7 @@
   import countryList from "country-list-js";
   import onMount from "@src/optimizers/onMount";
   import Search from "lucide-svelte/icons/search";
+  import X from "lucide-svelte/icons/x";
 
   class Range {
     start: number = 0;
@@ -80,13 +81,32 @@
   }
 
   onMount(() => {
+    selectCountry("DNK", true);
     console.log(countryList.findByIso3("DNK"));
   });
 </script>
 
 <div class="flex flex-col w-full h-full pt-40 gap-16 NotoSans">
-  <div class="flex justify-center w-full">
-    <h1 class="text-4xl">Computational Social Science</h1>
+  <div class="flex flex-col items-center justify-center w-full">
+    <h1 class="text-4xl">Country Mention Networks in UN Speeches</h1>
+    <div>Computational Social Science 02467 - group 10</div>
+    <div class="flex gap-8">
+      <a
+        class="link link-primary"
+        href="https://git.deprived.dev/DeprivedDevs/deprived-main-website/src/branch/main/src/routes/school/css"
+        >Website repository</a
+      >
+      <a
+        class="link link-primary"
+        href="https://github.com/MagicBOTAlex/Social-Informatik-02467-project"
+        >Python repository</a
+      >
+      <a
+        class="link link-primary"
+        href="https://www.kaggle.com/datasets/unitednations/un-general-debates"
+        >Dataset from kaggle</a
+      >
+    </div>
   </div>
   <div class="flex flex-col items-center justify-center w-full prose">
     <div class="flex gap-30 justify-between">
@@ -149,20 +169,31 @@
     </div>
 
     <div
-      class={currentCountry == "" ? "hidden" : ""}
+      class="{currentCountry == '' ? 'hidden' : ''} relative"
       style="width: 80%; height: 800px;"
     >
       <div>{currentCountrySelected}</div>
-      <iframe
-        src={currentCountry}
-        width="100%"
-        height="100%"
-        style="border: none; background: transparent;"
-        allowtransparency={true}
-        title="Network Graph"
-        bind:this={interactiveEmbed}
-      >
-      </iframe>
+      <div class="relative w-full h-full">
+        <iframe
+          src={currentCountry}
+          width="100%"
+          height="100%"
+          style="border: none; background: transparent;"
+          allowtransparency={true}
+          title="Network Graph"
+          bind:this={interactiveEmbed}
+          class="relative"
+        >
+        </iframe>
+        <button
+          on:click={() => {
+            currentCountrySelected = "";
+          }}
+          class="absolute right-0 top-0"
+        >
+          <X class="text-accent w-16 h-18 cursor-pointer" />
+        </button>
+      </div>
     </div>
     <div class="w-[60%]">
       <div class="flex justify-between">

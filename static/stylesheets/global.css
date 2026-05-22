@@ -71,12 +71,6 @@ body {
   margin: 0;
 }
 
-a,
-a:link a:visited {
-  color: var(--text1);
-  text-decoration: none;
-}
-
 code {
   font-weight: 400;
   font-size: 0.9rem;
