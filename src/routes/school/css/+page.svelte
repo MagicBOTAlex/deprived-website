@@ -92,178 +92,213 @@
     <h1 class="text-4xl">Country Mention Networks in UN Speeches</h1>
     <div>Computational Social Science 02467 - group 10</div>
   </div>
-  <div class="flex flex-col items-center justify-center w-full prose">
-    <div class="flex gap-30 justify-between">
-      <div>Negative range</div>
-      <div>Positive range</div>
-    </div>
-    <div class="w-98">
-      <div class="flex w-full justify-between">
-        <div class="-ml-1.5">-1</div>
-        <div>0</div>
-        <div>1</div>
-      </div>
-      <div class="flex gap-8">
-        <DoubleRangeSlider
-          bind:start={leftRange.start}
-          bind:end={leftRange.end}
-        />
-        <DoubleRangeSlider
-          bind:start={rightRange.start}
-          bind:end={rightRange.end}
-        />
-      </div>
-      <div class="flex w-full justify-around">
-        <div>
-          -{round(1 - leftRange.start).toFixed(1)} --- -{round(
-            1 - leftRange.end,
-          ).toFixed(1)}
-        </div>
-        <div>
-          {round(rightRange.start).toFixed(1)} --- {round(
-            rightRange.end,
-          ).toFixed(1)}
-        </div>
-      </div>
-    </div>
-    <div class="w-full flex justify-center max-h-screen">
-      <img
-        class="max-h-[80vh] object-contain"
-        src={"https://deprived.dev/assets/school/social-science/data/plots/sentiment_graph_-" +
-          round(1 - leftRange.end).toFixed(1) +
-          "_-" +
-          round(1 - leftRange.start).toFixed(1) +
-          "_" +
-          round(rightRange.start).toFixed(1) +
-          "_" +
-          round(rightRange.end).toFixed(1) +
-          ".jpg"}
-        alt=""
-      />
-    </div>
-  </div>
-  <div class="w-full flex flex-col items-center gap-10">
-    <div class="w-80">
-      <div class="text-4xl">Interactive graphs</div>
+  <div
+    class="collapse collapse-arrow bg-base-200 border border-base-300 rounded-box w-full"
+  >
+    <!-- The checkbox input manages the open/close state automatically -->
+    <input type="checkbox" />
+
+    <!-- Accordion Header Title -->
+    <div class="collapse-title text-xl font-medium">
+      Sentiment Range Controls & Graph
     </div>
 
-    <div
-      class="{currentCountry == '' ? 'hidden' : ''} relative"
-      style="width: 80%; height: 800px;"
-    >
-      <div>{currentCountrySelected}</div>
-      <div class="relative w-full h-full">
-        <iframe
-          src={currentCountry}
-          width="100%"
-          height="100%"
-          style="border: none; background: transparent;"
-          allowtransparency={true}
-          title="Network Graph"
-          bind:this={interactiveEmbed}
-          class="relative"
-        >
-        </iframe>
-        <button
-          on:click={() => {
-            currentCountrySelected = "";
-            currentCountry = "";
-          }}
-          class="absolute right-0 top-0"
-        >
-          <X class="text-accent w-16 h-18 cursor-pointer" />
-        </button>
-      </div>
-    </div>
-    <div class="w-[60%]">
-      <div class="flex justify-between">
-        <div class="text-2xl">List of interactive graphs</div>
-
-        <div class="join">
-          <button
-            class="btn btn-outline btn-disabled btn-accent join-item grid items-center justify-center"
-          >
-            <Search />
-          </button>
-          <input
-            bind:value={searchFilter}
-            type="text"
-            class="input join-item"
+    <!-- Accordion Body Content -->
+    <div class="collapse-content">
+      <div class="flex flex-col items-center justify-center w-full prose pt-4">
+        <div class="flex gap-30 justify-between">
+          <div>Negative range</div>
+          <div>Positive range</div>
+        </div>
+        <div class="w-98">
+          <div class="flex w-full justify-between">
+            <div class="-ml-1.5">-1</div>
+            <div>0</div>
+            <div>1</div>
+          </div>
+          <div class="flex gap-8">
+            <DoubleRangeSlider
+              bind:start={leftRange.start}
+              bind:end={leftRange.end}
+            />
+            <DoubleRangeSlider
+              bind:start={rightRange.start}
+              bind:end={rightRange.end}
+            />
+          </div>
+          <div class="flex w-full justify-around">
+            <div>
+              -{round(1 - leftRange.start).toFixed(1)} --- -{round(
+                1 - leftRange.end,
+              ).toFixed(1)}
+            </div>
+            <div>
+              {round(rightRange.start).toFixed(1)} --- {round(
+                rightRange.end,
+              ).toFixed(1)}
+            </div>
+          </div>
+        </div>
+        <div class="w-full flex justify-center max-h-screen">
+          <img
+            class="max-h-[80vh] object-contain"
+            src={"https://deprived.dev/assets/school/social-science/data/plots/sentiment_graph_-" +
+              round(1 - leftRange.end).toFixed(1) +
+              "_-" +
+              round(1 - leftRange.start).toFixed(1) +
+              "_" +
+              round(rightRange.start).toFixed(1) +
+              "_" +
+              round(rightRange.end).toFixed(1) +
+              ".jpg"}
+            alt=""
           />
         </div>
       </div>
-      <div class="italic opacity-60">
-        The interactive graphs has to be filtered, due to the large amount of
-        connections, making a full interactive graph, requires too much
-        processing power.
-      </div>
-
-      <div class="py-4"></div>
-      <div class="flex flex-wrap gap-2">
-        <div class="">Filter by region:</div>
-        {#each regionFilters as filter}
-          <div class="join">
-            <input
-              type="checkbox"
-              bind:checked={filter.selected}
-              class="join-item checkbox"
-            />
-            <div class="input input-xs join-item">{filter.region}</div>
-          </div>
-        {/each}
-      </div>
-      <div class="py-2"></div>
-      <CustomScrollBar
-        overflowX="hidden"
-        overflowY="auto"
-        Class="h-[60vh] border border-base-200  "
-        requireAbsolute={true}
-        hideOnMobile={true}
-      >
-        <table class="table w-full border-separate border-spacing-0">
-          <thead>
-            <tr>
-              <th class="sticky top-0 bg-base-100 z-10">Country</th>
-              <th class="sticky top-0 bg-base-100 z-10">ISO3</th>
-              <th class="sticky top-0 bg-base-100 z-10">From buttons</th>
-              <th class="sticky top-0 bg-base-100 z-10">Towards buttons</th>
-            </tr>
-          </thead>
-          <tbody>
-            {#each iso3 as country}
-              {#if (getCountryName(country)
-                .toLowerCase()
-                .includes(searchFilter.toLowerCase()) || country
-                  .toLowerCase()
-                  .includes(searchFilter.toLowerCase())) && (!regionFilters.some((r) => r.selected) || regionFilters.find((r) => r.region === countryList.findByIso3(country)?.continent)?.selected)}
-                <!-- Changed your data cell wrappers from <th> to <td> for correct semantics -->
-                <tr class="hover">
-                  <td>{getCountryName(country)}</td>
-                  <td>{country}</td>
-                  <td>
-                    <div class="w-full h-full grid items-center justify-center">
-                      <button
-                        on:click={() => selectCountry(country, false)}
-                        class="btn btn-outline btn-primary">From</button
-                      >
-                    </div>
-                  </td>
-                  <td>
-                    <div class="w-full h-full grid items-center justify-center">
-                      <button
-                        on:click={() => selectCountry(country, true)}
-                        class="btn btn-outline btn-secondary">Towards</button
-                      >
-                    </div>
-                  </td>
-                </tr>
-              {/if}
-            {/each}
-          </tbody>
-        </table>
-      </CustomScrollBar>
     </div>
   </div>
+
+  <div
+    class="collapse collapse-arrow bg-base-200 border border-base-300 rounded-box w-full"
+  >
+    <!-- The checkbox input manages the open/close state automatically -->
+    <input type="checkbox" />
+
+    <!-- Accordion Header Title -->
+    <div class="collapse-title text-xl font-medium">Interactive graphs</div>
+
+    <!-- Accordion Body Content -->
+    <div class="collapse-content">
+      <div class="w-full flex flex-col items-center gap-10">
+        <div class="w-80">
+          <div class="text-4xl">Interactive graphs</div>
+        </div>
+
+        <div
+          class="{currentCountry == '' ? 'hidden' : ''} relative"
+          style="width: 80%; height: 800px;"
+        >
+          <div>{currentCountrySelected}</div>
+          <div class="relative w-full h-full">
+            <iframe
+              src={currentCountry}
+              width="100%"
+              height="100%"
+              style="border: none; background: transparent;"
+              allowtransparency={true}
+              title="Network Graph"
+              bind:this={interactiveEmbed}
+              class="relative"
+            >
+            </iframe>
+            <button
+              on:click={() => {
+                currentCountrySelected = "";
+                currentCountry = "";
+              }}
+              class="absolute right-0 top-0"
+            >
+              <X class="text-accent w-16 h-18 cursor-pointer" />
+            </button>
+          </div>
+        </div>
+        <div class="w-[60%]">
+          <div class="flex justify-between">
+            <div class="text-2xl">List of interactive graphs</div>
+
+            <div class="join">
+              <button
+                class="btn btn-outline btn-disabled btn-accent join-item grid items-center justify-center"
+              >
+                <Search />
+              </button>
+              <input
+                bind:value={searchFilter}
+                type="text"
+                class="input join-item"
+              />
+            </div>
+          </div>
+          <div class="italic opacity-60">
+            The interactive graphs has to be filtered, due to the large amount
+            of connections, making a full interactive graph, requires too much
+            processing power.
+          </div>
+
+          <div class="py-4"></div>
+          <div class="flex flex-wrap gap-2">
+            <div class="">Filter by region:</div>
+            {#each regionFilters as filter}
+              <div class="join">
+                <input
+                  type="checkbox"
+                  bind:checked={filter.selected}
+                  class="join-item checkbox"
+                />
+                <div class="input input-xs join-item">{filter.region}</div>
+              </div>
+            {/each}
+          </div>
+          <div class="py-2"></div>
+          <CustomScrollBar
+            overflowX="hidden"
+            overflowY="auto"
+            Class="h-[60vh] border border-base-200  "
+            requireAbsolute={true}
+            hideOnMobile={true}
+          >
+            <table class="table w-full border-separate border-spacing-0">
+              <thead>
+                <tr>
+                  <th class="sticky top-0 bg-base-100 z-10">Country</th>
+                  <th class="sticky top-0 bg-base-100 z-10">ISO3</th>
+                  <th class="sticky top-0 bg-base-100 z-10">From buttons</th>
+                  <th class="sticky top-0 bg-base-100 z-10">Towards buttons</th>
+                </tr>
+              </thead>
+              <tbody>
+                {#each iso3 as country}
+                  {#if (getCountryName(country)
+                    .toLowerCase()
+                    .includes(searchFilter.toLowerCase()) || country
+                      .toLowerCase()
+                      .includes(searchFilter.toLowerCase())) && (!regionFilters.some((r) => r.selected) || regionFilters.find((r) => r.region === countryList.findByIso3(country)?.continent)?.selected)}
+                    <!-- Changed your data cell wrappers from <th> to <td> for correct semantics -->
+                    <tr class="hover">
+                      <td>{getCountryName(country)}</td>
+                      <td>{country}</td>
+                      <td>
+                        <div
+                          class="w-full h-full grid items-center justify-center"
+                        >
+                          <button
+                            on:click={() => selectCountry(country, false)}
+                            class="btn btn-outline btn-primary">From</button
+                          >
+                        </div>
+                      </td>
+                      <td>
+                        <div
+                          class="w-full h-full grid items-center justify-center"
+                        >
+                          <button
+                            on:click={() => selectCountry(country, true)}
+                            class="btn btn-outline btn-secondary"
+                            >Towards</button
+                          >
+                        </div>
+                      </td>
+                    </tr>
+                  {/if}
+                {/each}
+              </tbody>
+            </table>
+          </CustomScrollBar>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="flex justify-center w-full">
     <div class="flex flex-col">
       <div class="text-4xl">Sources</div>
