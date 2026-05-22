@@ -5,6 +5,7 @@
   import onMount from "@src/optimizers/onMount";
   import Search from "lucide-svelte/icons/search";
   import X from "lucide-svelte/icons/x";
+  import CustomScrollBar from "../../comps/CustomScrollBar.svelte";
 
   class Range {
     start: number = 0;
@@ -81,7 +82,7 @@
   }
 
   onMount(() => {
-    selectCountry("DNK", true);
+    // selectCountry("DNK", true);
     console.log(countryList.findByIso3("DNK"));
   });
 </script>
@@ -90,23 +91,6 @@
   <div class="flex flex-col items-center justify-center w-full">
     <h1 class="text-4xl">Country Mention Networks in UN Speeches</h1>
     <div>Computational Social Science 02467 - group 10</div>
-    <div class="flex gap-8">
-      <a
-        class="link link-primary"
-        href="https://git.deprived.dev/DeprivedDevs/deprived-main-website/src/branch/main/src/routes/school/css"
-        >Website repository</a
-      >
-      <a
-        class="link link-primary"
-        href="https://github.com/MagicBOTAlex/Social-Informatik-02467-project"
-        >Python repository</a
-      >
-      <a
-        class="link link-primary"
-        href="https://www.kaggle.com/datasets/unitednations/un-general-debates"
-        >Dataset from kaggle</a
-      >
-    </div>
   </div>
   <div class="flex flex-col items-center justify-center w-full prose">
     <div class="flex gap-30 justify-between">
@@ -161,11 +145,6 @@
   <div class="w-full flex flex-col items-center gap-10">
     <div class="w-80">
       <div class="text-4xl">Interactive graphs</div>
-      <div>
-        The interactive graphs has to be filtered, due to the large amount of
-        connections, making a full interactive graph, requires too much
-        processing power.
-      </div>
     </div>
 
     <div
@@ -198,6 +177,7 @@
     <div class="w-[60%]">
       <div class="flex justify-between">
         <div class="text-2xl">List of interactive graphs</div>
+
         <div class="join">
           <button
             class="btn btn-outline btn-disabled btn-accent join-item grid items-center justify-center"
@@ -211,6 +191,12 @@
           />
         </div>
       </div>
+      <div class="italic opacity-60">
+        The interactive graphs has to be filtered, due to the large amount of
+        connections, making a full interactive graph, requires too much
+        processing power.
+      </div>
+
       <div class="py-4"></div>
       <div class="flex flex-wrap gap-2">
         <div class="">Filter by region:</div>
@@ -225,46 +211,80 @@
           </div>
         {/each}
       </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Country</th>
-            <th>ISO3</th>
-            <th>From buttons</th>
-            <th>Towards buttons</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each iso3 as country}
-            {#if (getCountryName(country)
-              .toLowerCase()
-              .includes(searchFilter.toLowerCase()) || country
+      <div class="py-2"></div>
+      <CustomScrollBar
+        overflowX="hidden"
+        overflowY="auto"
+        Class="h-[60vh] border border-base-200  "
+        requireAbsolute={true}
+        hideOnMobile={true}
+      >
+        <table class="table w-full border-separate border-spacing-0">
+          <thead>
+            <tr>
+              <th class="sticky top-0 bg-base-100 z-10">Country</th>
+              <th class="sticky top-0 bg-base-100 z-10">ISO3</th>
+              <th class="sticky top-0 bg-base-100 z-10">From buttons</th>
+              <th class="sticky top-0 bg-base-100 z-10">Towards buttons</th>
+            </tr>
+          </thead>
+          <tbody>
+            {#each iso3 as country}
+              {#if (getCountryName(country)
                 .toLowerCase()
-                .includes(searchFilter.toLowerCase())) && (!regionFilters.some((r) => r.selected) || regionFilters.find((r) => r.region === countryList.findByIso3(country)?.continent)?.selected)}
-              <tr>
-                <th>{getCountryName(country)}</th>
-                <th>{country}</th>
-                <th>
-                  <div class="w-full h-full grid items-center justify-center">
-                    <button
-                      on:click={() => selectCountry(country, false)}
-                      class="btn btn-outline btn-primary">From</button
-                    >
-                  </div>
-                </th>
-                <th>
-                  <div class="w-full h-full grid items-center justify-center">
-                    <button
-                      on:click={() => selectCountry(country, true)}
-                      class="btn btn-outline btn-secondary">Towards</button
-                    >
-                  </div>
-                </th>
-              </tr>
-            {/if}
-          {/each}
-        </tbody>
-      </table>
+                .includes(searchFilter.toLowerCase()) || country
+                  .toLowerCase()
+                  .includes(searchFilter.toLowerCase())) && (!regionFilters.some((r) => r.selected) || regionFilters.find((r) => r.region === countryList.findByIso3(country)?.continent)?.selected)}
+                <!-- Changed your data cell wrappers from <th> to <td> for correct semantics -->
+                <tr class="hover">
+                  <td>{getCountryName(country)}</td>
+                  <td>{country}</td>
+                  <td>
+                    <div class="w-full h-full grid items-center justify-center">
+                      <button
+                        on:click={() => selectCountry(country, false)}
+                        class="btn btn-outline btn-primary">From</button
+                      >
+                    </div>
+                  </td>
+                  <td>
+                    <div class="w-full h-full grid items-center justify-center">
+                      <button
+                        on:click={() => selectCountry(country, true)}
+                        class="btn btn-outline btn-secondary">Towards</button
+                      >
+                    </div>
+                  </td>
+                </tr>
+              {/if}
+            {/each}
+          </tbody>
+        </table>
+      </CustomScrollBar>
     </div>
   </div>
+  <div class="flex justify-center w-full">
+    <div class="flex flex-col">
+      <div class="text-4xl">Sources</div>
+      <div class="flex justify-center gap-8">
+        <a
+          class="link link-primary"
+          href="https://git.deprived.dev/DeprivedDevs/deprived-main-website/src/branch/main/src/routes/school/css"
+          >Website repository</a
+        >
+        <a
+          class="link link-primary"
+          href="https://github.com/MagicBOTAlex/Social-Informatik-02467-project"
+          >Python repository</a
+        >
+        <a
+          class="link link-primary"
+          href="https://www.kaggle.com/datasets/unitednations/un-general-debates"
+          >Dataset from kaggle</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="py-8"></div>
 </div>
