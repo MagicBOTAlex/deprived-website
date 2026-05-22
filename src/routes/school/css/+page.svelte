@@ -504,7 +504,7 @@
                 style="border: none; background: transparent;"
                 allowtransparency={true}
                 title="Network Graph Incoming"
-                class="w-full h-[400px] block"
+                class="w-full h-[400px] block overflow-hidden"
               >
               </iframe>
 
@@ -513,7 +513,7 @@
                 style="border: none; background: transparent;"
                 allowtransparency={true}
                 title="Network Graph Outgoing"
-                class="w-full h-[400px] block"
+                class="w-full h-[400px] block overflow-hidden"
               >
               </iframe>
             </div>
@@ -524,8 +524,8 @@
   </div>
 
   <div class="flex justify-center w-full">
-    <div class="flex flex-col">
-      <div class="text-4xl">Sources</div>
+    <div class="flex flex-col gap-4">
+      <div class="text-4xl text-center">Resources</div>
       <div class="flex justify-center gap-8">
         <a
           class="link link-primary"
