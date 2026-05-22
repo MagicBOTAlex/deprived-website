@@ -90,7 +90,7 @@
 <div class="flex flex-col w-full h-full pt-40 gap-16 NotoSans">
   <div class="flex flex-col items-center justify-center w-full">
     <h1 class="text-4xl">Country Mention Networks in UN Speeches</h1>
-    <div>Computational Social Science 02467 - group 10</div>
+    <div>Computational Social Science 02467 - Group 10</div>
   </div>
   <div
     class="collapse collapse-arrow bg-base-200 border border-base-300 rounded-box w-full"
