@@ -189,7 +189,9 @@
     <input type="checkbox" checked={true} />
 
     <!-- Accordion Header Title -->
-    <div class="collapse-title text-4xl font-medium">Full Network Overview</div>
+    <div class="collapse-title text-4xl text-center font-medium">
+      Full Network Overview
+    </div>
 
     <!-- Accordion Body Content -->
     <div class="collapse-content">
@@ -270,7 +272,7 @@
     <input type="checkbox" checked={true} />
 
     <!-- Accordion Header Title -->
-    <div class="collapse-title text-4xl font-medium">
+    <div class="collapse-title text-4xl text-center font-medium">
       Explore Country Level Relationships
     </div>
 
@@ -422,95 +424,101 @@
     <input type="checkbox" checked={true} />
 
     <!-- Accordion Header Title -->
-    <div class="collapse-title text-4xl font-medium">Main findings</div>
+    <div class="collapse-title text-4xl text-center font-medium">
+      Main findings
+    </div>
 
     <!-- Accordion Body Content -->
     <div class="collapse-content">
-      <div class="flex gap-4">
-        <section class="flex-2/3 flex flex-col gap-2">
-          <div>
-            Our analysis suggests that diplomatic attention in UN speeches is
-            unevenly distributed across countries. A smaller number of countries
-            appear much more frequently in international discourse, while many
-            others are mentioned less often. In the network, countries such as
-            the United States, China, and Russia stand out as especially visible
-            actors, which suggests that global political attention is
-            concentrated around a limited set of highly prominent states.
-          </div>
-          <div>
-            The country level graphs also show that diplomatic attention is
-            directional rather than balanced. Some countries appear to direct
-            attention broadly toward many others, while some are more prominent
-            as targets of discussion. For example, the United States appears as
-            a country with broad outgoing attention, while China and Russia also
-            emerge as major targets of incoming attention from other countries.
-            This shows that centrality in the network can reflect different
-            roles: a country may be highly active in talking about others,
-            highly visible as a topic of discussion, or both.
-          </div>
-          <div>
-            Another important pattern is that international political discourse
-            is not purely positive or purely negative. The sentiment based
-            graphs suggest that the same country can receive both supportive and
-            critical references depending on who is speaking and in what
-            context. This is especially visible for countries like the United
-            States, China, and Russia, which appear in a mix of positive and
-            negative relationships rather than fitting into a single simple
-            category. This highlights the complexity of diplomatic language,
-            where cooperation, criticism, and strategic concern can exist at the
-            same time.
-          </div>
-          <div class="py-2"></div>
-          <div>
-            The filtered graphs also make it easier to compare large, globally
-            central actors with smaller or more selective ones. For example, the
-            Vatican appears much less densely connected than countries such as
-            the United States, China, or Russia. This suggests a more selective
-            pattern of diplomatic attention, where some actors are present in
-            the network but do not occupy the same broad, central role as major
-            geopolitical powers.
-          </div>
-          <div>
-            Taken together, these findings suggest that UN speeches reveal more
-            than isolated political statements. They reflect a larger structure
-            of global diplomatic attention in which a small number of countries
-            occupy especially central positions, while others appear in more
-            limited or specialized ways. By combining mention frequency with
-            positive and negative framing, the network provides a more nuanced
-            picture of how countries are represented in international discourse.
-          </div>
-        </section>
+      <div class="justify-center flex">
+        <div class="flex gap-4 max-w-7xl">
+          <section class="flex-2/3 flex flex-col gap-2">
+            <div>
+              Our analysis suggests that diplomatic attention in UN speeches is
+              unevenly distributed across countries. A smaller number of
+              countries appear much more frequently in international discourse,
+              while many others are mentioned less often. In the network,
+              countries such as the United States, China, and Russia stand out
+              as especially visible actors, which suggests that global political
+              attention is concentrated around a limited set of highly prominent
+              states.
+            </div>
+            <div>
+              The country level graphs also show that diplomatic attention is
+              directional rather than balanced. Some countries appear to direct
+              attention broadly toward many others, while some are more
+              prominent as targets of discussion. For example, the United States
+              appears as a country with broad outgoing attention, while China
+              and Russia also emerge as major targets of incoming attention from
+              other countries. This shows that centrality in the network can
+              reflect different roles: a country may be highly active in talking
+              about others, highly visible as a topic of discussion, or both.
+            </div>
+            <div>
+              Another important pattern is that international political
+              discourse is not purely positive or purely negative. The sentiment
+              based graphs suggest that the same country can receive both
+              supportive and critical references depending on who is speaking
+              and in what context. This is especially visible for countries like
+              the United States, China, and Russia, which appear in a mix of
+              positive and negative relationships rather than fitting into a
+              single simple category. This highlights the complexity of
+              diplomatic language, where cooperation, criticism, and strategic
+              concern can exist at the same time.
+            </div>
+            <div class="py-2"></div>
+            <div>
+              The filtered graphs also make it easier to compare large, globally
+              central actors with smaller or more selective ones. For example,
+              the Vatican appears much less densely connected than countries
+              such as the United States, China, or Russia. This suggests a more
+              selective pattern of diplomatic attention, where some actors are
+              present in the network but do not occupy the same broad, central
+              role as major geopolitical powers.
+            </div>
+            <div>
+              Taken together, these findings suggest that UN speeches reveal
+              more than isolated political statements. They reflect a larger
+              structure of global diplomatic attention in which a small number
+              of countries occupy especially central positions, while others
+              appear in more limited or specialized ways. By combining mention
+              frequency with positive and negative framing, the network provides
+              a more nuanced picture of how countries are represented in
+              international discourse.
+            </div>
+          </section>
 
-        <div class="lg:w-1/3 flex flex-col gap-4 max-h-screen min-h-0">
-          <div class="font-semibold text-2xl shrink-0">
-            Example of China’s outgoing vs incoming diplomatic attention
-          </div>
-          <div
-            class="badge bagde-xl badge-primary font-semibold text-primary-content"
-          >
-            Interactive
-          </div>
-
-          <div
-            class="flex flex-1 flex-col lg:flex-row gap-4 min-h-0 overflow-hidden"
-          >
-            <iframe
-              src="https://deprived.dev/assets/school/social-science/data/interactive/CHN-in.html"
-              style="border: none; background: transparent;"
-              allowtransparency={true}
-              title="Network Graph Incoming"
-              class="w-full h-[400px] block"
+          <div class="lg:w-1/3 flex flex-col gap-4 max-h-screen min-h-0">
+            <div class="font-semibold text-2xl shrink-0">
+              Example of China’s outgoing vs incoming diplomatic attention
+            </div>
+            <div
+              class="badge bagde-xl badge-primary font-semibold text-primary-content"
             >
-            </iframe>
+              Interactive
+            </div>
 
-            <iframe
-              src="https://deprived.dev/assets/school/social-science/data/interactive/CHN-out.html"
-              style="border: none; background: transparent;"
-              allowtransparency={true}
-              title="Network Graph Outgoing"
-              class="w-full h-[400px] block"
+            <div
+              class="flex flex-1 flex-col lg:flex-row gap-4 min-h-0 overflow-hidden"
             >
-            </iframe>
+              <iframe
+                src="https://deprived.dev/assets/school/social-science/data/interactive/CHN-in.html"
+                style="border: none; background: transparent;"
+                allowtransparency={true}
+                title="Network Graph Incoming"
+                class="w-full h-[400px] block"
+              >
+              </iframe>
+
+              <iframe
+                src="https://deprived.dev/assets/school/social-science/data/interactive/CHN-out.html"
+                style="border: none; background: transparent;"
+                allowtransparency={true}
+                title="Network Graph Outgoing"
+                class="w-full h-[400px] block"
+              >
+              </iframe>
+            </div>
           </div>
         </div>
       </div>
