@@ -167,6 +167,7 @@
         <button
           on:click={() => {
             currentCountrySelected = "";
+            currentCountry = "";
           }}
           class="absolute right-0 top-0"
         >
