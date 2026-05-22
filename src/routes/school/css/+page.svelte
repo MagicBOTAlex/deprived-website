@@ -96,7 +96,7 @@
     class="collapse collapse-arrow bg-base-200 border border-base-300 rounded-box w-full"
   >
     <!-- The checkbox input manages the open/close state automatically -->
-    <input type="checkbox" />
+    <input type="checkbox" checked={true} />
 
     <!-- Accordion Header Title -->
     <div class="collapse-title text-xl font-medium">
@@ -162,7 +162,7 @@
     class="collapse collapse-arrow bg-base-200 border border-base-300 rounded-box w-full"
   >
     <!-- The checkbox input manages the open/close state automatically -->
-    <input type="checkbox" />
+    <input type="checkbox" checked={true} />
 
     <!-- Accordion Header Title -->
     <div class="collapse-title text-xl font-medium">Interactive graphs</div>
